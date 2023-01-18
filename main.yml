@@ -1,0 +1,22 @@
+name: Deploy to WP Engine
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: GitHub Action Deploy to WP Engine
+      uses: wpengine/github-action-wpe-site-deploy@v3
+      with:
+      # Deploy vars
+        WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_DEPLOY }} 
+        STG_ENV: intergrations
+        # Deploy Options
+        REMOTE_PATH: "/sites/intergrations/wp-content/themes/$directorytheme"
+        PHP_LINT: TRUE
+p-content/mu-plugins/local-plugin --exclude-from=ignorefile.txt        FLAGS: -azvr --inplace --delete --exclude=".*"  --exclude=w
+        CACHE_CLEAR: TRUE
